@@ -1,4 +1,10 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { UserEntity } from './user.entity';
 
 @Entity({ name: 'Tweet' })
@@ -8,10 +14,11 @@ export class TweetEntity {
 
   @Column()
   texto: string;
-  
+
   @Column()
   data: string;
 
   @ManyToOne(() => UserEntity, (user) => user.tweets)
-  userId: UserEntity;
+  @JoinTable()
+  user: UserEntity;
 }

@@ -19,4 +19,9 @@ export class UserService {
     const savedUser = await this.userRepository.save(user);
     return savedUser;
   }
+
+  async findUser(user) {
+    const foundUser = await this.userRepository.findOneByOrFail({ user: user });
+    return foundUser;
+  }
 }
