@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { TweetEntity } from './tweet.entity';
 
 @Entity({ name: 'User' })
 export class UserEntity {
@@ -16,4 +17,7 @@ export class UserEntity {
 
   @Column()
   photoUrl: string;
+
+  @OneToMany(() => TweetEntity, (tweet) => tweet.user)
+  tweets: TweetEntity[];
 }
