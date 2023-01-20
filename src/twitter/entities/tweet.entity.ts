@@ -5,13 +5,13 @@ import { UserEntity } from './user.entity';
 export class TweetEntity {
   @PrimaryGeneratedColumn('increment')
   id: string;
+
   @Column()
   texto: string;
-  @Column()
-  userId: string;
+  
   @Column()
   data: string;
 
-  @ManyToOne(() => UserEntity, (user) => user.tweets, { cascade: true })
-  user: UserEntity;
+  @ManyToOne(() => UserEntity, (user) => user.tweets)
+  userId: UserEntity;
 }

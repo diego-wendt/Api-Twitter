@@ -18,6 +18,6 @@ export class UserEntity {
   @Column()
   photoUrl: string;
 
-  @OneToMany(() => TweetEntity, (tweet) => tweet.user)
+  @OneToMany(() => TweetEntity, (tweet) => tweet.userId, { cascade: true })
   tweets: TweetEntity[];
 }
